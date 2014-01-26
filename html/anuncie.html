@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block title%}Empresas{%endblock%}
+{%block titulo-azul%}Anuncie!{%endblock%}
+{%block subtitulo-azul%}Seja um parceiro do ClubeOferta{%endblock%}
+{%block titulo-conteudo%}Preencha o cadastro e um de nossos representantes entrar&aacute; em contato com voc&ecirc;!{%endblock%}
+{%block conteudo%}			
+	<form method="post" action="{%url anuncie%}" name="contactform">{% csrf_token %}
+			<table>
+				{% for field in form %}
+						<tr>
+							<td>{{ field.label_tag}}</td>
+							<td>{{ field}}</td>
+						</tr>
+						{%if field.errors %}<tr><td>{{ field.errors }}</td></tr>{%endif%}
+				{% endfor %}
+			<tr>
+				<td colspan="2" align="center">
+							<input type="submit" value="Enviar" name="contactus" id="contactus" class="contactsubmit" />
+				</td>
+			</tr>
+			</table>
+	</form>
+{%endblock%}

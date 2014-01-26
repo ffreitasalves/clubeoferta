@@ -1,0 +1,21 @@
+/* ************************************************************************* */
+					 		/* IE7 FIXES */
+/* ************************************************************************* */
+.footer_user, .footer_email {width: 180px;height: 30px;padding: 12px 10px 0 32px;}
+#home_social_wrap {width: 300px;}
+#header {height: 113px; position: relative;z-index: 999;}
+#interiorbanner h2 {padding-top: 26px;}
+hr {color: #DDD;}
+#sidebar .sidebar_search{background: url("../images/bg_input_sidebar_search.jpg") bottom right no-repeat !important;}
+.footer_email {background: none;}
+.footer_user{background: none;}
+.iefix {background: url("../images/bg_input_footer_mailing_user.gif") left top no-repeat;}
+.iefix2 {background: url("../images/bg_input_footer_mailing_email.gif") left top no-repeat;}
+#twitit a {padding: 15px 0 15px 40px !important;display: block !important;}
+.wp_ss_tags {width: 550px !important;clear: right;}
+#main_content_sidebar .post_content .more-link {color: #000 !important;display: inline;}
+
+
+
+.slider-container {background: url("../images/bg_div_flashbanner_center.jpg");}
+iframe {background: transparent;}

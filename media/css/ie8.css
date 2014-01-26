@@ -1,0 +1,9 @@
+/* ************************************************************************* */
+					 		/* IE8 FIXES */
+/* ************************************************************************* */
+#interiorbanner h2 {padding-top: 26px;}
+.footer_user, .footer_email {width: 177px;height: 29px;padding: 13px 13px 0 32px;}
+
+
+.slider-container {background: url("../images/bg_div_flashbanner_center.jpg");}
+iframe {background: transparent;}

@@ -1,0 +1,4 @@
+.idea/
+*.pyc
+env_pegada/
+*.db

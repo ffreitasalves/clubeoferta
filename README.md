@@ -45,6 +45,7 @@ Acesse o endereço do admin e faça o login com seu super-usuário:
 Crie um Anúncio preenchendo todos os campos obrigatórios
 
 Ainda no Admin (`http://localhost:8000/admin`) crie as páginas planas que o site possui com as seguintes urls:
+
 como-funciona<br>
 faq<br>
 sobre<br>

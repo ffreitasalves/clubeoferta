@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="pt-br" />
+	<meta name="rating" content="General" />
+	<meta name="doc-type" content="Public" />
+	<meta name="doc-class" content="Living Document" />
+	<meta name="robots" content="index,nofollow" />
+	<meta name="revisit-after" content="1 Day" />
+	<meta name="keywords" content="voucher brasil, compras coletivas, descontos, clube de compras, oferta, promocoes, diversao, " />
+	<meta name="keywords" content="{{anuncio.empresa}}, pagar menos, economia, sair com pouco" />
+	<meta name="description" content="Clube Oferta - 50% a 90% de descontos nos melhores locais da cidade. Cadastre-se, agora é só se divertir!" />
+
+	<title>[ClubeOferta] - de 50% até 99% de Desconto em Ofertas Diárias - {{anuncio.anuncio}} - Agora é só se divertir!</title>
+<link href='{{MEDIA_URL}}css/style.css' rel='stylesheet' type='text/css' />
+<link href='{{MEDIA_URL}}css/black/style.css' rel='stylesheet' type='text/css' />
+<!--[if IE 6]><link href="{{MEDIA_URL}}css/ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 7]><link href="{{MEDIA_URL}}css/ie7.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if IE 8]><link href="{{MEDIA_URL}}css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.cycle.all.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/piroBox.1_2.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/sansation_custom.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/fancyzoom.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+		imagem = new Image();
+		imagem.src = "/media/images/botao_hover.png";
+	   var faltantes = {{tempo_restante}};				
+	   
+	   function marcaTempo() {
+	
+				
+			
+				var horaF = ~~(1*faltantes / 3600.0);
+				var minF = ~~(1*(faltantes - 3600.0*horaF)/60.0);
+				var segF = ~~(1*faltantes - 3600.0*horaF - 60.0*minF);
+				faltantes--;		
+				
+				if (segF < 10){
+					segF = "0"+segF;
+				}
+				if (minF < 10){
+					minF = "0"+minF;
+				}
+				if (horaF < 10){
+					horaF = "0"+horaF;
+				}
+				if(horaF == 0 && minF ==0 && segF ==0){
+					tempo.innerHTML = (horaF+":"+minF+":"+segF);		
+					return;
+				}
+			
+			$("#tempo").html(horaF+":"+minF+":"+segF);
+			
+				var x = setTimeout("marcaTempo();", 1000);
+		}
+
+$(document).ready(function() { 
+		
+		marcaTempo();
+			
+	   });
+</script>
+
+</head>
+<body>
+
+<div id="usuario_logado">
+{%if user.is_authenticated%}
+	Olá, {{user}}, Você está em: 
+	<select>
+		<option value="sao-paulo">São Paulo</option>
+		<option value="sao-paulo">Outras Cidades</option>
+	</select>
+	| <a href="{%url logout%}">Sair</a>	
+{% else %}
+	Olá, Você está em: 
+	<select>
+		<option value="sao-paulo">São Paulo</option>
+		<option value="sao-paulo">Outras Cidades</option>
+	</select>
+	| <a href="{%url login%}">Fazer Login</a>
+{% endif %}
+</div>
+<div id="header">
+	<div class="center relative">
+	<h1 class="ss_logo"><a href="{%url index%}"><img src="{{MEDIA_URL}}images/logo_cb.png" alt="" /></a></h1>
+	<div id="nav_main">
+	<ul class="sf-menu">
+	<li class="current_page_parent"><a href="{%url index%}">Nova Oferta!</a></li>
+	<li><a href="{%url recentes%}">Recentes</a></li>
+	<li><a href="{%url cadastro%}">Cadastro</a></li>
+	<li><a href="{%url conta%}">Conta</a></li>
+	<li><a href="{% url anuncie%}">Anuncie</a></li>
+
+	</ul>
+	</div><!-- end nav_main -->
+	</div>
+	<!-- end center -->
+	<div id="social_top">
+	<ul>
+	<li>
+    	<a href="mailto:?body=Clube Oferta- {{anuncio.twitt}}&subject=Oferta do Clube Oferta - {{anuncio.twitt}}">
+        	<img src="{{MEDIA_URL}}images/mail.png" alt="Compartilhe por email" />
+        </a>
+    </li>
+	<li><a rel="nofollow" href="http://twitter.com/home?status={{anuncio.twitt}}" target="_blank">
+		<img src="{{MEDIA_URL}}images/fallowus_icon01.jpg" alt="Compartilhe no Twitter" /></a>
+	</li>
+	<li><a href="http://promote.orkut.com/preview?nt=orkut.com&du=http://www.clubeoferta.com.br/teste&tt={{anuncio.anuncio}}&amp;tn=http//www.clubeoferta.com.br/media/images/Logo_VoucherBR.png" alt="{{anuncio.twitt}}" target="_blank">
+		<img src="{{MEDIA_URL}}images/icone-orkut.jpg" alt="Compartilhe no Orkut" /></a>
+	</li>
+	<li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://www.clubeoferta.com.br/" target="_blank">
+		<img src="{{MEDIA_URL}}images/fallowus_icon02.jpg" alt="Compartilhe no Facebook" /></a>
+	</li>
+	</ul>
+	</div>
+</div><!-- end header -->
+
+
+<div id="flashbanner">
+	<div class="center">
+	<div id="home_slider" style="position:relative;overflow:hidden;height:396px;">		
+		
+		{%for foto in fotos%}
+		<div class="slider-container">
+			<div class="home_slider_thumbnail_content">
+			<h1>Oferta do Dia</h1>
+			<h2 style="color:#FFFFFF;font-size:36px">
+				{{ anuncio.anuncio }} 
+				<br/>
+				(de R${{anuncio.preco_original|floatformat:2}} por R${{anuncio.preco_desconto|floatformat:2}})
+								<p>&nbsp;</p>
+			</h2>
+
+			</div><!-- end home_slider_thumbnail_content -->
+
+			<div class="home_slider_thumbnail"><img src="{{MEDIA_URL}}{{foto.foto}}" alt="" />
+			<!-- end bottom -->
+			</div><!-- end home_slider_thumbnail -->
+		</div><!-- end slider-container -->		
+		
+		
+		
+
+
+		{%endfor%}
+				
+	
+		
+	  </div><!-- end home_slider -->
+		<div id="home_slider_nav"></div><!-- end home_slider -->
+	</div>
+	<!-- end center -->
+</div><!-- end flashbanner -->
+
+
+
+<div id="content_wrap" class="gradient">
+	<div class="center flashhome">
+		
+		<div class="black_callout">
+
+<div class="text_calloutcenter">
+
+<div class="text_callouttext">
+
+{{texto_venda}}<br />
+<strong>Tempo Restante: <span id="tempo">00:00:00</span></strong>
+
+</div><!-- end text -->
+
+
+<a href="{% url pre_compra anuncio.id%}" class="text_calloutbutton"></a><!-- end button -->
+</div>
+</div>
+
+
+<br class="clear" />
+
+<div class="main_contenthome">
+
+				
+<div class="home_mainsec">
+<h3><u>Destaques</u></h3>
+<ul>
+{%for destaque in destaques%}
+<li>&nbsp;{{destaque.destaque}}</li><br />
+{%endfor%}
+</ul>
+</div><!-- end threecol -->
+
+
+
+
+<div class="home_mainsec">
+<h3><u>Regras</u></h3>
+<ul>
+{%for regra in regras%}
+<li>&nbsp;{{regra.regra}}</li><br />
+{%endfor%}
+</ul>
+</div><!-- end threecol -->
+
+
+
+
+<div class="home_mainsec_last">
+	<h3><u>{{anuncio.empresa}}</u></h3>
+	<a href="{{anuncio.site}}">{{anuncio.site}}</a>
+	{%for end in enderecos%}
+	<p>
+		{%if end.endereco%}
+			{{end.endereco}}<br />{{end.bairro}}<br />{{end.cidade}} - {{end.uf}}<br/>
+		{%endif%}
+		{{end.telefone}}
+		
+	</p>
+	{%endfor%}
+
+	</div><!-- end threecol_last -->
+
+</div>
+
+<br class="clear" />
+<p></p>
+<br class="clear" />
+								
+	<div id="full_width"> 
+		<div class="center">
+	<iframe src="http://www.facebook.com/plugins/likebox.php?id=157873090899450&amp;width=960&amp;connections=40&amp;stream=false&amp;header=true&amp;height=287" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:287px;" allowTransparency="true"></iframe>
+			<div class="cinza"> 
+				<h6>{{ anuncio.texto|linebreaks}}</h6> 
+			</div>
+		
+ 
+            <br class="clear" /> 
+	  </div><!-- end center --> 
+	</div><!-- end full_width --> 
+</div>
+	<!-- end center -->
+</div><!-- end content_wrap -->
+
+
+
+
+
+<div id="footer">
+<div class="center">
+	<div class="fourcol_footer">
+	<h2>O Clube Oferta</h2>
+	<ul>
+		<li><h4><a href="/como-funciona/">Como Funciona</a></h4></li>
+		<li><h4><a href="/faq/">Perguntas Frequentes</a></h4>  
+		<li><h4><a href="/sobre/">Sobre</a></h4></li>
+	</ul>
+	</div><!-- end fourcol -->
+
+
+
+	<div class="fourcol_footer">
+	<h2>Nosso Trabalho</h2>
+		<ul>
+			<li><h4><a href="/imprensa/">Imprensa</a></h4></li>
+			<li><h4><a href="/politica/">Política de Privacidade</a></h4></li>
+			<li><h4><a href="/termos/">Termos e Condições</a></h4></li>
+			<li><h4><a href="/trabalhe-conosco/">Trabalhe Conosco</a></h4></li>
+		</ul>
+	</div><!-- end fourcol -->
+
+
+
+
+	<div class="fourcol_footer">
+	<h2><span class="socialheader">Siga-nos</span></h2>		
+	<div id="sidebar_social_wrap">
+	<ul>
+	<li><a href="http://twitter.com/clubeoferta" target="_blank"><img src="{{MEDIA_URL}}images/fallowus_icon01.jpg" alt="Siga-nos no Twitter" /></a></li>
+	<li><a href="http://www.facebook.com/pages/Pegada-Coletiva/157873090899450" target="_blank"><img src="{{MEDIA_URL}}images/fallowus_icon02.jpg" alt="Siga-nos no Facebook" /></a></li>
+	<li><a href="http://www.orkut.com.br/Main#Community?cmm=106727161" target="_blank"><img src="{{MEDIA_URL}}images/icone-orkut.jpg" alt="Comunidade no Orkut" /></a></li>
+	</ul>
+	<p>Encontre-se conosco! Estamos em todos os lugares oferecendo as melhores ofertas para voc&ecirc;</p>
+	</div><!-- end sidebar_social_wrap -->
+	<br />
+	</div><!-- end fourcol -->
+
+
+
+	<div class="fourcol_footer_last">
+		<h2>Sobre</h2>
+		<p style="text-align:center">
+		No meio do caminho tinha uma pegada<br />
+		tinha uma pegada no meio do caminho.<br />
+		No meio do caminho havia várias pegadas<br />
+		Uma delas era a sua.<p />
+    </div><!-- end fourcol_last -->
+
+
+
+
+	<div id="copyright">
+	<p>ClubeOferta &copy; 2012. Todos os direitos reservados.</p>
+	</div><!-- end copyright -->
+</div><!-- end center -->
+</div><!-- end footer -->
+
+
+<script type="text/javascript">
+//<![CDATA[
+		jQuery(function(){
+			jQuery('ul.sf-menu').superfish();
+		});
+//]]>
+</script>
+
+
+<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.cycle.all.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+$(function() {
+
+    $('#home_slider').cycle({
+        fx:      'fade',
+        timeout:  5500,
+        pager:   '#home_slider_nav',
+        pagerAnchorBuilder: pagerFactory,
+		pause:  true
+    });
+
+    function pagerFactory(idx, slide) {
+        return '<ul><li><a href="#">'+(idx+1)+'</a></li></ul>';
+    };
+    
+});
+//]]>
+</script>
+
+
+<script type="text/javascript" src="{{MEDIA_URL}}js/piroBox.1_2.js"></script>
+
+
+</body>
+</html>

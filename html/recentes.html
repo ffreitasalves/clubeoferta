@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{%block title%}Ofertas Recentes{%endblock%}
+{%block titulo-azul%}Recentes{%endblock%}
+{%block subtitulo-azul%}O que voc&ecirc; j&aacute; p&ocirc;de aproveitar!{%endblock%}
+{%block titulo-conteudo%}{%endblock%}
+{%block conteudo%}	
+	{%for anuncio in recentes%}
+		<div class="portfolio_big_wrap">
+			<div class="portfolio_desc">
+			<h3>{{anuncio.empresa}}</h3>
+			<span class="small_datetext">{{anuncio.fim}}</span>
+			<p>{{anuncio.anuncio}}</p>
+			<a href="{{anuncio.site}}" class="port_but">Visite o Site</a>
+			</div><!-- end portfolio_desc -->
+
+			<div class="portfolio_content_image">
+					<div class="fade"><a href="{{MEDIA_URL}}{{anuncio.foto_principal}}" class="pirobox_gall_ss attachment-fadeIn" title="{{anuncio.anuncio}}"><img src="{{MEDIA_URL}}{{anuncio.foto_principal}}" alt="" width="430" height="250" /></a></div><!-- end fade -->
+			</div><!-- portfolio_content_image -->
+		</div><!-- end portfolio_big_wrap -->
+		
+		<br class="clear" />
+		<hr />
+		<br class="clear" />			
+	{% endfor %}
+		
+{%endblock%}

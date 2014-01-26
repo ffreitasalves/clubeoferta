@@ -1,0 +1,90 @@
+BEGIN;CREATE TABLE `anuncio_localidades` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `uf` varchar(2) NOT NULL,
+    `cidade` varchar(200) NOT NULL,
+    `cidade_url` varchar(200) NOT NULL UNIQUE
+)
+;
+CREATE TABLE `anuncio_anuncios_localidades` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncios_id` integer NOT NULL,
+    `localidades_id` integer NOT NULL,
+    UNIQUE (`anuncios_id`, `localidades_id`)
+)
+;
+ALTER TABLE `anuncio_anuncios_localidades` ADD CONSTRAINT `localidades_id_refs_id_6b3a2457` FOREIGN KEY (`localidades_id`) REFERENCES `anuncio_localidades` (`id`);
+CREATE TABLE `anuncio_anuncios` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `order` integer UNSIGNED NOT NULL,
+    `anuncio` varchar(200) NOT NULL,
+    `empresa` varchar(200) NOT NULL,
+    `twitt` varchar(140) NOT NULL,
+    `preco_original` numeric(6, 2) NOT NULL,
+    `preco_desconto` numeric(6, 2) NOT NULL,
+    `site` varchar(200) NOT NULL,
+    `minimo` integer NOT NULL,
+    `maximo` integer,
+    `date_added` datetime NOT NULL,
+    `texto` longtext NOT NULL,
+    `validade` date NOT NULL,
+    `duracao` integer NOT NULL,
+    `ativo` bool NOT NULL,
+    `peso` numeric(4, 2) NOT NULL,
+    `inicio` datetime NOT NULL,
+    `fim` datetime NOT NULL,
+    `DataCriacao` datetime NOT NULL,
+    `UltimaModificacao` datetime NOT NULL
+)
+;
+ALTER TABLE `anuncio_anuncios_localidades` ADD CONSTRAINT `anuncios_id_refs_id_1446dfb5` FOREIGN KEY (`anuncios_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_enderecos` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `logradouro` varchar(200) NOT NULL,
+    `numero` integer,
+    `complemento` varchar(200),
+    `bairro` varchar(200) NOT NULL,
+    `cidade` varchar(200) NOT NULL,
+    `uf` varchar(2) NOT NULL,
+    `telefone` varchar(200) NOT NULL
+)
+;
+ALTER TABLE `anuncio_enderecos` ADD CONSTRAINT `anuncio_id_refs_id_31d26154` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_destaques` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `destaque` varchar(200) NOT NULL
+)
+;
+ALTER TABLE `anuncio_destaques` ADD CONSTRAINT `anuncio_id_refs_id_4c7cd5c9` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_regras` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `regra` varchar(200) NOT NULL
+)
+;
+ALTER TABLE `anuncio_regras` ADD CONSTRAINT `anuncio_id_refs_id_15f38505` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_fotos` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `foto` varchar(200) NOT NULL
+)
+;
+ALTER TABLE `anuncio_fotos` ADD CONSTRAINT `anuncio_id_refs_id_204d188d` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_filtros` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `nome_filtro` varchar(200) NOT NULL
+)
+;
+ALTER TABLE `anuncio_filtros` ADD CONSTRAINT `anuncio_id_refs_id_6f9b2e71` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+CREATE TABLE `anuncio_valores` (
+    `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    `anuncio_id` integer NOT NULL,
+    `filtro_id` integer NOT NULL,
+    `valor` varchar(200) NOT NULL,
+    `qtd` integer
+)
+;
+ALTER TABLE `anuncio_valores` ADD CONSTRAINT `anuncio_id_refs_id_70b5c430` FOREIGN KEY (`anuncio_id`) REFERENCES `anuncio_anuncios` (`id`);
+ALTER TABLE `anuncio_valores` ADD CONSTRAINT `filtro_id_refs_id_63faf1dc` FOREIGN KEY (`filtro_id`) REFERENCES `anuncio_filtros` (`id`);COMMIT;

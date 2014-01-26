@@ -1,0 +1,23 @@
+﻿{% extends "base.html" %}
+{%block title%}Contas{%endblock%}
+{%block titulo-azul%}Sua Conta!{%endblock%}
+{%block subtitulo-azul%}Olha o que voc&ecirc; j&aacute; aproveitou!{%endblock%}
+{%block titulo-conteudo%}{%endblock%}
+{%block conteudo%}
+	<h6 style="color:#FF0000">Olá, {{user}}<br /></h6>
+	<a href="{%url password_change%}">Mudar Senha </a> | 	
+	<a href="{%url logout%}">Sair</a>
+	{%for compra in compras%}
+    	<h5>{{compra.anuncio.empresa}} : {{compra.anuncio}}</h5>
+		<table width="100%">
+        <th>Nome</th>
+        <th>Voucher</th>        
+        	{%for nome in compra.nomes%}            
+                <tr>
+                    <td>{{ nome }}</td>
+                    <td>{{ nome.voucher }}</td>
+                </tr>
+	        {%endfor%}
+		</table>
+    {%endfor%}
+{%endblock%}

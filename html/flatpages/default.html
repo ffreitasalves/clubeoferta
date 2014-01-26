@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{%block title%}{{flatpage.title}}{%endblock%}
+{%block titulo-azul%}VBR{%endblock%}
+{%block subtitulo-azul%}{{flatpage.title}}{%endblock%}
+{%block conteudo%}			
+<div class="cinza">
+{{flatpage.content|linebreaks}}
+</div>
+{%endblock%}

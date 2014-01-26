@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html>
+<head>
+<title>Redirecionando para o PagSeguro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body>
+<h2>Voc&ecirc; est&aacute; sendo redirecionado para o PagSeguro, caso isso n&atilde;o aconte&ccedil;a clique na imagem abaixo:</h2>
+<br />
+	{{carrinho.mostra|safe}}
+<script type="text/javascript">
+	   var faltantes = 3;		
+	   window.name = "pagseguro";
+	   
+	   function marcaTempo() {
+	
+
+				faltantes--;		
+
+			if (faltantes == 0){
+				document.forms[0].submit();
+				
+			}
+			else{			
+				
+				setTimeout("marcaTempo();", 1000);
+				
+			}
+		}
+		
+		marcaTempo();
+			
+</script>
+</body>
+</html>

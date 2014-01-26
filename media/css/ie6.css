@@ -1,0 +1,20 @@
+/* ************************************************************************* */
+					 		/* IE6 FIXES */
+/* ************************************************************************* */
+#header {height: 113px; position: relative;z-index: 999;}
+.footer_user, .footer_email {width: 180px;height: 30px;padding: 12px 10px 0 32px;}
+#home_social_wrap {width: 300px;}
+.jqueryslidemenu ul ul{background: transparent url("../images/bg_ul_nav_main.gif") 0 0 no-repeat;}
+hr {color: #DDD;}
+#vertical_nav {height: 54.7em;}
+#interiorbanner .center {height: 12.4em;}
+#interiorbanner h2 {padding-top: 26px;}
+.footer_email {background-attachment:fixed;}
+#sidebar .sidebar_search{background-attachment:fixed;}
+#nav_main img {display: none !important;width: 0;height: 0;}
+.post_title_wrap {width: 533px;float: right;}
+.post_reply_form_wrap, .post_wrap, .post_reply_form_wrap, .comment_inside_wrap, .comment_message_wrap {display: inline;}
+#main_content_sidebar .post_date {color: #FFF;font-size:2.8em;margin: 12px 0 0 0;padding: 0 !important;width: 58px;}
+#main_content_sidebar .post_month {color: #9BB6C8;font-size:1.7em;margin: 0 0 0 0;padding: 0 !important;width: 58px;}
+#footer li {margin-bottom: 12px;background: url("../images/bg_li_footer.gif") 0 5px no-repeat;padding-left: 15px;}
+

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{%block title%}{{anuncio.anuncio}}{%endblock%}
+{%block javascript%}
+<script type="text/javascript">	   
+
+		function calc_t(){
+			$("#total").text( (~~1.0*$("#qtd").text()) * (~~1.0*$("#preco").text()) );
+		}
+		
+$(document).ready(function() { 
+
+
+		
+		$(".adicionar").click(function (){
+			
+			novo_nome = $("#utilizadores").clone();
+			novo_nome.find("#id_utilizador").val("");			
+			novo_nome.append('<a href="#" onclick="javascript:$('+"'#qtd'"+').text($('+"'#qtd'"+').text()-1);calc_t();$(this).parent().remove();">-retirar</a>');
+			$("#utilizadores").after(novo_nome);
+			$("#qtd").text(~~1.0*$("#qtd").text() + 1);
+			calc_t();
+		});			
+		
+		$("#btn_comprar").click(function () {
+			$("#id_nomes").val("");
+			flag_saida = false;
+			$(".utilizadores").each(function (){
+				if ($(this).val() == "")
+				{
+					alert("Um dos nomes está em branco.");
+					flag_saida = true;
+					return false;
+				}
+				else{
+					$("#id_nomes").val( $("#id_nomes").val() + $(this).val()  + ";");
+				}
+			});
+				
+			{%if anuncio.tem_filtro %}
+			$("#id_filtros").val("");
+			$(".filtros").each(function (){
+				if ($(this).val() == 0){
+					alert("Um dos filtros não foi selecionado.");
+					flag_saida = true;
+					return false;
+				}
+				else{
+					$("#id_filtros").val( $("#id_filtros").val() + $(this).val()  + ";");
+				}
+			});
+			{%endif%}
+				
+				if (!flag_saida){
+					$("form").submit();
+				}
+			
+			});
+			
+});
+</script>
+{%endblock%}
+{%block titulo-azul%}Compra{%endblock%}
+{%block subtitulo-azul%}{{anuncio.anuncio}}{%endblock%}
+{%block titulo-conteudo%}Compre esta oferta para voc&ecirc; e seus amigos e divirta-se pagando pouco.{%endblock%}
+{%block conteudo%}	
+			{%if erro%}
+				<h5 style="color:#FF0000">{{erro}}<br /></h5>
+			{%endif%}	
+			
+			<div class="threecol"> 
+			<div class="img_frame_port"> 
+			<div class="fade">
+				<img src="{{MEDIA_URL}}{{anuncio.foto_principal}}" alt="{{anuncio.anuncio}}" width="275" height="179"/>
+			</div><!-- end fade --> 
+			</div><!-- end img_frame_port --> 
+			<h3>{{anuncio.empresa}} </h3> 
+			<p>{{anuncio.anuncio}}</p> 
+			</div><!-- end threecol --> 	
+			
+			Nome de quem vai utilizar:
+            <div id="form_utilizadores">            	
+                <div id="utilizadores">            	
+						<input id="id_utilizador" type="text" class="utilizadores">
+						{%if anuncio.tem_filtro %}
+							<select id="id_filtro" class="filtros">
+								<option value=0>Selecione uma Opção</option>
+								{%for valor in valores%}
+									<option value="{{valor.id}}">{{valor}}</option>
+								{%endfor%}
+							</select>
+						{%endif%}
+                </div>
+            </div>
+			<a href="#" class="adicionar">+Adicionar</a>
+			<p>&nbsp;</p>
+			Qtd:<span id="qtd">1</span><br />
+			<p><h5>Preço: R$ <span id="preco">{{anuncio.preco_desconto}}</span> | Total: R$ <span id="total">{{anuncio.preco_desconto}}</span></h5></p>
+			<input id="preco" type="hidden"  value={{anuncio.preco_desconto}}/>
+
+	<form method="POST">{% csrf_token %}
+			<input id="id_nomes" type="hidden"  name="nomes"/>
+			{%if anuncio.tem_filtro %}
+				<input id="id_filtros" type="hidden"  name="filtros"/>
+			{%endif%}
+    		<input type="button" value="Comprar" id="btn_comprar" class="contactsubmit" />
+	</form>
+
+{%endblock%}
