@@ -80,7 +80,7 @@ MEDIA_URL = 'http://localhost:8000/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = 'http://localhost:8000/media/media_admin/'
+ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'z2!9+131tv*qp_8_qhaq*%&0i6%c7o7kqdilhc8^!$#yg!m!m('
