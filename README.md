@@ -4,6 +4,7 @@ ClubeOferta
 Antigo Projeto de  Site de Compra Coletiva feito sobre o Django 1.2, o projeto inicial era chamado de Clube Oferta, mas foi lançado posteriormente como Pegada Coletiva. Foi meu segundo projeto em Django, haverá bastante espaço para arrumação.
 Este site contem cadastro de anuncios de compra coletiva e integração com Pagseguro, recebe também os dados automaticamente sobre o pagamento.
 
+![Screenshot](https://raw.githubusercontent.com/ffreitasalves/clubeoferta/master/pegadacoletiva.jpg)
 
 Requisitos
 =======
